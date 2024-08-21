@@ -45,10 +45,8 @@ public class BudgetService {
                 totalAmount += budget.dailyAmount() * (startDate.lengthOfMonth() - startDate.getDayOfMonth() + 1);
             } else if (budget.getYearMonth().equals(endYearMonth)) {
                 totalAmount += budget.dailyAmount() * endDate.getDayOfMonth();
-            } else {
-                if (budget.getYearMonth().isAfter(startYearMonth) && budget.getYearMonth().isBefore(endYearMonth)) {
-                    totalAmount += budget.amount;
-                }
+            } else if (budget.getYearMonth().isAfter(startYearMonth) && budget.getYearMonth().isBefore(endYearMonth)) {
+                totalAmount += budget.amount;
             }
         }
 
