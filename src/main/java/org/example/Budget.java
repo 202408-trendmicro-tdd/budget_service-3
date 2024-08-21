@@ -1,7 +1,9 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.Temporal;
 
 public class Budget {
     public String yearMonth;
@@ -22,5 +24,9 @@ public class Budget {
 
     public int days() {
         return getYearMonth().lengthOfMonth();
+    }
+
+    public LocalDate lastDay() {
+        return getYearMonth().atEndOfMonth();
     }
 }
