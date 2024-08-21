@@ -15,4 +15,8 @@ public class Budget {
     public YearMonth getYearMonth() {
         return YearMonth.parse(yearMonth, DateTimeFormatter.ofPattern("yyyyMM"));
     }
+
+    public double days() {
+        return getYearMonth().lengthOfMonth();
+    }
 }
