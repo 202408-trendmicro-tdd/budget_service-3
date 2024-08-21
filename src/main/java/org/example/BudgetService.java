@@ -45,9 +45,10 @@ public class BudgetService {
         double totalAmount = 0;
         for (Budget budget : budgets) {
             if (budget.getYearMonth().equals(startYearMonth)) {
-                totalAmount += budget.amount / startDate.lengthOfMonth() * startDayDiff;
+                totalAmount += budget.dailyAmount() * startDayDiff;
+//                totalAmount += budget.amount / startDate.lengthOfMonth() * startDayDiff;
             } else if (budget.getYearMonth().equals(endYearMonth)) {
-                totalAmount += budget.amount / endDate.lengthOfMonth() * endDayDiff;
+                totalAmount += budget.dailyAmount() * endDayDiff;
             } else {
                 YearMonth bugetDate = YearMonth.of(Integer.valueOf(budget.yearMonth.substring(0, 4)), Integer.valueOf(budget.yearMonth.substring(4)));
                 if ((bugetDate.atDay(1).isAfter(startDate) && bugetDate.atDay(1).isBefore(endDate)) &&
