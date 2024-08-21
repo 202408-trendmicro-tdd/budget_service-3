@@ -18,11 +18,9 @@ public class BudgetService {
         }
 
 
-        double totalAmount;
         Period period = new Period(startDate, endDate);
-        totalAmount = BudgetRepo.getAll().stream().mapToDouble(budget -> budget.overlappingAmount(period)).sum();
 
-        return totalAmount;
+        return BudgetRepo.getAll().stream().mapToDouble(budget -> budget.overlappingAmount(period)).sum();
     }
 
 
