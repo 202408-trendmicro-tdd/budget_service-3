@@ -16,23 +16,6 @@ public class BudgetService {
         this.BudgetRepo = BudgetRepo;
     }
 
-    private static long getOverlappingDays(Period period, Budget budget) {
-        LocalDate overlappingStart = null;
-        LocalDate overlappingEnd = null;
-        if (budget.getYearMonth().equals(YearMonth.from(period.startDate()))) {
-            overlappingStart = period.startDate();
-            overlappingEnd = budget.lastDay();
-        } else if (budget.getYearMonth().equals(YearMonth.from(period.endDate()))) {
-            overlappingStart = budget.firstDay();
-            overlappingEnd = period.endDate();
-        } else if (budget.getYearMonth().isAfter(YearMonth.from(period.startDate())) && budget.getYearMonth().isBefore(YearMonth.from(period.endDate()))) {
-            overlappingStart = budget.firstDay();
-            overlappingEnd = budget.lastDay();
-        }
-        long overlappingDays = DAYS.between(overlappingStart, overlappingEnd) + 1;
-        return overlappingDays;
-    }
-
     public double totalAmount(LocalDate startDate, LocalDate endDate) {
         if (startDate.isAfter(endDate)) {
             return 0;
@@ -58,7 +41,7 @@ public class BudgetService {
 
         double totalAmount = 0;
         for (Budget budget : budgets) {
-            long overlappingDays = getOverlappingDays(new Period(startDate, endDate), budget);
+            long overlappingDays = new Period(startDate, endDate).getOverlappingDays(budget);
             totalAmount += budget.dailyAmount() * overlappingDays;
         }
 
