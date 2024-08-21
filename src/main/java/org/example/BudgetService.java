@@ -7,7 +7,6 @@ public class BudgetService {
 
     private final IRepository BudgetRepo;
 
-    List<Budget> budgets;
 
     public BudgetService(IRepository BudgetRepo) {
         this.BudgetRepo = BudgetRepo;
@@ -18,10 +17,10 @@ public class BudgetService {
             return 0;
         }
 
-        budgets = BudgetRepo.getAll();
-        if (this.budgets.isEmpty()) {
-            return 0;
-        }
+        List<Budget> budgets = BudgetRepo.getAll();
+//        if (this.budgets.isEmpty()) {
+//            return 0;
+//        }
 
 
         double totalAmount = 0;
