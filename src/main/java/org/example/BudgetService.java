@@ -17,15 +17,10 @@ public class BudgetService {
             return 0;
         }
 
-        List<Budget> budgets = BudgetRepo.getAll();
-//        if (this.budgets.isEmpty()) {
-//            return 0;
-//        }
-
 
         double totalAmount = 0;
         Period period = new Period(startDate, endDate);
-        for (Budget budget : budgets) {
+        for (Budget budget : BudgetRepo.getAll()) {
             totalAmount += budget.overlappingAmount(period);
         }
 
