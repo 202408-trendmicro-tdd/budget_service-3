@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="371850d2-f042-46f6-a845-46cdde6be1eb" name="Changes" comment="" />
+    <list default="true" id="fdd847da-0ca4-4939-a0f0-25a6b85b30da" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,10 +18,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2kxVSdO4pSJoRzUPbWn4AOz0hch" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2kxWztoZHtZoqQSc8AikIU3kDdt" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -32,10 +33,6 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -51,13 +48,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="371850d2-f042-46f6-a845-46cdde6be1eb" name="Changes" comment="" />
-      <created>1724225216884</created>
+      <changelist id="fdd847da-0ca4-4939-a0f0-25a6b85b30da" name="Changes" comment="" />
+      <created>1724225974972</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1724225216884</updated>
-      <workItem from="1724225218302" duration="190000" />
-      <workItem from="1724225413659" duration="348000" />
+      <updated>1724225974972</updated>
+      <workItem from="1724225976459" duration="75000" />
     </task>
     <servers />
   </component>
