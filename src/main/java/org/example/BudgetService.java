@@ -1,10 +1,7 @@
 package org.example;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
 import java.util.List;
-
-import static java.time.temporal.ChronoUnit.DAYS;
 
 public class BudgetService {
 
@@ -14,6 +11,10 @@ public class BudgetService {
 
     public BudgetService(IRepository BudgetRepo) {
         this.BudgetRepo = BudgetRepo;
+    }
+
+    private static double overlappingAmount(Budget budget, Period period) {
+        return budget.dailyAmount() * period.getOverlappingDays(budget.createPeriod());
     }
 
     public double totalAmount(LocalDate startDate, LocalDate endDate) {
@@ -30,7 +31,7 @@ public class BudgetService {
         double totalAmount = 0;
         Period period = new Period(startDate, endDate);
         for (Budget budget : budgets) {
-            totalAmount += budget.dailyAmount() * period.getOverlappingDays(budget.createPeriod());
+            totalAmount += overlappingAmount(budget, period);
         }
 
         return totalAmount;
