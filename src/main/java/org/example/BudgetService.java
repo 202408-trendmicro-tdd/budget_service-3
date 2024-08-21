@@ -29,13 +29,11 @@ public class BudgetService {
         YearMonth startYearMonth = YearMonth.from(startDate);
         YearMonth endYearMonth = YearMonth.from(endDate);
         if (startYearMonth.equals(endYearMonth)) {
-//            int days = endDate.lengthOfMonth();
             long overlappingDays = DAYS.between(startDate, endDate) + 1;
 
             for (Budget budget : budgets) {
                 if (budget.getYearMonth().equals(startYearMonth)) {
                     return budget.dailyAmount() * overlappingDays;
-//                    return budget.amount / days * overlappingDays;
                 }
             }
             return 0;
