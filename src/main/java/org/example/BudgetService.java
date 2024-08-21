@@ -44,9 +44,9 @@ public class BudgetService {
             long overlappingDays = 0;
             if (budget.getYearMonth().equals(startYearMonth)) {
                 overlappingDays = DAYS.between(startDate, budget.lastDay()) + 1;
-//                overlappingDays = startDate.lengthOfMonth() - startDate.getDayOfMonth() + 1;
             } else if (budget.getYearMonth().equals(endYearMonth)) {
-                overlappingDays = endDate.getDayOfMonth();
+                overlappingDays = DAYS.between(budget.firstDay(), endDate) + 1;
+//                overlappingDays = endDate.getDayOfMonth();
             } else if (budget.getYearMonth().isAfter(startYearMonth) && budget.getYearMonth().isBefore(endYearMonth)) {
                 overlappingDays = budget.days();
             }
