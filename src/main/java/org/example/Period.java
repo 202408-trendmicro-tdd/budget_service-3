@@ -7,6 +7,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public record Period(LocalDate startDate, LocalDate endDate) {
     long getOverlappingDays(Budget budget) {
+        Period another = new Period(budget.firstDay(), budget.lastDay());
         LocalDate firstDay = budget.firstDay();
         LocalDate lastDay = budget.lastDay();
         LocalDate overlappingStart = startDate.isAfter(firstDay) ? startDate : firstDay;
