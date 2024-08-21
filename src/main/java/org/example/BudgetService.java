@@ -32,7 +32,8 @@ public class BudgetService {
 
             for (Budget budget : budgets) {
                 if (budget.yearMonth.equals(String.format("%d%02d", startDate.getYear(), startDate.getMonthValue()))) {
-                    return budget.amount * overlappingDays / days;
+                    return budget.amount / days * overlappingDays;
+//                    return budget.amount * overlappingDays / days;
                 }
             }
             return 0;
