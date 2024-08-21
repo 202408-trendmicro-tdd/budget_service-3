@@ -14,6 +14,10 @@ public class Budget {
         this.amount = amount;
     }
 
+    Period createPeriod() {
+        return new Period(firstDay(), lastDay());
+    }
+
     double dailyAmount() {
         return this.amount / days();
     }
