@@ -44,7 +44,8 @@ public class BudgetService {
 
         double totalAmount = 0;
         for (Budget budget : budgets) {
-            if (budget.yearMonth.equals(String.format("%d%02d", startDate.getYear(), startDate.getMonthValue()))) {
+            if (budget.getYearMonth().equals(startYearMonth)) {
+//            if (budget.yearMonth.equals(String.format("%d%02d", startDate.getYear(), startDate.getMonthValue()))) {
                 totalAmount += budget.amount * startDayDiff / startDate.lengthOfMonth();
             } else if (budget.yearMonth.equals(String.format("%d%02d", endDate.getYear(), endDate.getMonthValue()))) {
                 totalAmount += budget.amount * endDayDiff / endDate.lengthOfMonth();
