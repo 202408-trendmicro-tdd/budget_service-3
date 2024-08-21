@@ -16,6 +16,10 @@ public class BudgetService {
         this.BudgetRepo = BudgetRepo;
     }
 
+    private static Period createPeriod(Budget budget) {
+        return new Period(budget.firstDay(), budget.lastDay());
+    }
+
     public double totalAmount(LocalDate startDate, LocalDate endDate) {
         if (startDate.isAfter(endDate)) {
             return 0;
@@ -41,7 +45,7 @@ public class BudgetService {
 
         double totalAmount = 0;
         for (Budget budget : budgets) {
-            long overlappingDays = new Period(startDate, endDate).getOverlappingDays(new Period(budget.firstDay(), budget.lastDay()));
+            long overlappingDays = new Period(startDate, endDate).getOverlappingDays(createPeriod(budget));
             totalAmount += budget.dailyAmount() * overlappingDays;
         }
 
