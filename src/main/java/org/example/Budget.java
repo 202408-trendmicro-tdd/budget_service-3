@@ -20,7 +20,7 @@ public class Budget {
         return YearMonth.parse(yearMonth, DateTimeFormatter.ofPattern("yyyyMM"));
     }
 
-    public double days() {
+    public int days() {
         return getYearMonth().lengthOfMonth();
     }
 }
