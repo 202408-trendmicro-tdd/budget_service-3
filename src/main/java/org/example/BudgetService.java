@@ -1,8 +1,11 @@
 package org.example;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class BudgetService {
 
@@ -28,12 +31,12 @@ public class BudgetService {
         YearMonth endYearMonth = YearMonth.from(endDate);
         if (startYearMonth.equals(endYearMonth)) {
             int days = endDate.lengthOfMonth();
-            int overlappingDays = endDate.getDayOfMonth() - startDate.getDayOfMonth() + 1;
+            long overlappingDays = DAYS.between(startDate, endDate) + 1;
+//            int overlappingDays = endDate.getDayOfMonth() - startDate.getDayOfMonth() + 1;
 
             for (Budget budget : budgets) {
                 if (budget.yearMonth.equals(String.format("%d%02d", startDate.getYear(), startDate.getMonthValue()))) {
                     return budget.amount / days * overlappingDays;
-//                    return budget.amount * overlappingDays / days;
                 }
             }
             return 0;
