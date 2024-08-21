@@ -20,11 +20,14 @@ public class BudgetService {
         }
 
         budgets = BudgetRepo.getAll();
-        if(this.budgets.isEmpty()) {
+        if (this.budgets.isEmpty()) {
             return 0;
         }
 
-        if (startDate.getYear() == endDate.getYear() && startDate.getMonth() == endDate.getMonth()) {
+        YearMonth startYearMonth = YearMonth.from(startDate);
+        YearMonth endYearMonth = YearMonth.from(endDate);
+        if (startYearMonth.equals(endYearMonth)) {
+//        if (startDate.getYear() == endDate.getYear() && startDate.getMonth() == endDate.getMonth()) {
             int days = endDate.lengthOfMonth();
             int diff = endDate.getDayOfMonth() - startDate.getDayOfMonth() + 1;
 
@@ -47,8 +50,8 @@ public class BudgetService {
                 totalAmount += budget.amount * endDayDiff / endDate.lengthOfMonth();
             } else {
                 YearMonth bugetDate = YearMonth.of(Integer.valueOf(budget.yearMonth.substring(0, 4)), Integer.valueOf(budget.yearMonth.substring(4)));
-                if((bugetDate.atDay(1).isAfter(startDate) && bugetDate.atDay(1).isBefore(endDate)) &&
-                    (bugetDate.atEndOfMonth().isAfter(startDate) && bugetDate.atEndOfMonth().isBefore(endDate)) ) {
+                if ((bugetDate.atDay(1).isAfter(startDate) && bugetDate.atDay(1).isBefore(endDate)) &&
+                        (bugetDate.atEndOfMonth().isAfter(startDate) && bugetDate.atEndOfMonth().isBefore(endDate))) {
                     totalAmount += budget.amount;
                 }
             }
@@ -56,7 +59,6 @@ public class BudgetService {
 
 
         return totalAmount;
-
 
 
 //        return 0;
