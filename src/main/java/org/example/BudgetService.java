@@ -41,7 +41,6 @@ public class BudgetService {
 
         double totalAmount = 0;
         for (Budget budget : budgets) {
-            long overlappingDays = 0;
             LocalDate overlappingStart = null;
             LocalDate overlappingEnd = null;
             if (budget.getYearMonth().equals(startYearMonth)) {
@@ -54,7 +53,7 @@ public class BudgetService {
                 overlappingStart = budget.firstDay();
                 overlappingEnd = budget.lastDay();
             }
-            overlappingDays = DAYS.between(overlappingStart, overlappingEnd) + 1;
+            long overlappingDays = DAYS.between(overlappingStart, overlappingEnd) + 1;
             totalAmount += budget.dailyAmount() * overlappingDays;
         }
 
