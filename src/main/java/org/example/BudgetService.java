@@ -1,6 +1,5 @@
 package org.example;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
@@ -15,10 +14,6 @@ public class BudgetService {
 
     public BudgetService(IRepository BudgetRepo) {
         this.BudgetRepo = BudgetRepo;
-    }
-
-    private static double dailyAmount(Budget budget) {
-        return budget.amount / budget.days();
     }
 
     public double totalAmount(LocalDate startDate, LocalDate endDate) {
@@ -39,7 +34,7 @@ public class BudgetService {
 
             for (Budget budget : budgets) {
                 if (budget.getYearMonth().equals(startYearMonth)) {
-                    return dailyAmount(budget) * overlappingDays;
+                    return budget.dailyAmount() * overlappingDays;
 //                    return budget.amount / days * overlappingDays;
                 }
             }
